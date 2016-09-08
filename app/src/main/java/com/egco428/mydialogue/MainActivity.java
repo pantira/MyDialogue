@@ -133,11 +133,30 @@ public class MainActivity extends AppCompatActivity {
                 final Dialog dialog = new Dialog(MainActivity.this);
                 dialog.setTitle("Login Dialog");
                 dialog.setContentView(R.layout.dialog_custom);
-                final EditText username = (EditText)findViewById(R.id.username);
-                final EditText password = (EditText)findViewById(R.id.password);
-                final Button buttonLogin = (Button)findViewById(R.id.login);
-                final Button buttonCancle = (Button)findViewById(R.id.cancle);
+                final EditText username = (EditText)dialog.findViewById(R.id.username);
+                final EditText password = (EditText)dialog.findViewById(R.id.password);
+                Button buttonLogin = (Button)dialog.findViewById(R.id.login);
+                Button buttonCancel = (Button)dialog.findViewById(R.id.cancel);
+                buttonCancel.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View view) {
+                        dialog.dismiss();
+                    }
+                });
+                buttonLogin.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View view) {
+                        if(username.getText().toString().equals("admin")&&password.getText().toString().equals("1234")){
+                            Toast.makeText(getApplicationContext(),"Login Success",Toast.LENGTH_LONG).show();
+                        }
+                        else {
+                            Toast.makeText(getApplicationContext(),"Login Fail",Toast.LENGTH_LONG).show();
+                        }
+                    }
+                });
+                dialog.show();
             }
         });
+
     }
 }
