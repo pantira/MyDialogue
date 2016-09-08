@@ -1,11 +1,13 @@
 package com.egco428.mydialogue;
 
+import android.app.Dialog;
 import android.content.DialogInterface;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.Toast;
 
 import java.util.ArrayList;
@@ -122,6 +124,19 @@ public class MainActivity extends AppCompatActivity {
                 builder.setNegativeButton("No", null);
                 builder.create();
                 builder.show();
+            }
+        });
+
+        buttonCustom.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                final Dialog dialog = new Dialog(MainActivity.this);
+                dialog.setTitle("Login Dialog");
+                dialog.setContentView(R.layout.dialog_custom);
+                final EditText username = (EditText)findViewById(R.id.username);
+                final EditText password = (EditText)findViewById(R.id.password);
+                final Button buttonLogin = (Button)findViewById(R.id.login);
+                final Button buttonCancle = (Button)findViewById(R.id.cancle);
             }
         });
     }
